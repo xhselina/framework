@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+       <bean id="car" class="org.china.framework.spring.model.Car" p:brand="保时捷" p:color="green" p:price="680000" scope="prototype"></bean>
+       <bean id="typeModel" class="org.china.framework.spring.model.TypeModel">
+              <property name="car">
+                     <ref parent="car1"></ref>
+              </property>
+              <property name="list">
+                     <list>
+                            <value>a</value>
+                            <value>b</value>
+                            <value>c</value>
+                     </list>
+              </property>
+
+              <property name="set">
+                     <set>
+                            <value>1234</value>
+                            <value>12345</value>
+                            <value>12346</value>
+                            <value>1234</value>
+                     </set>
+              </property>
+
+              <property name="map">
+                     <map>
+                            <entry>
+                                   <key><value>str</value></key>
+                                   <value>string</value>
+                            </entry>
+                     </map>
+              </property>
+
+              <property name="properties">
+                     <props>
+                            <prop key="a">1234</prop>
+                            <prop key="b">nnnnn</prop>
+                     </props>
+              </property>
+       </bean>
+
+       <bean id="methodDi" class="org.china.framework.spring.model.MethodDI">
+              <lookup-method name="getCar" bean="car"></lookup-method>
+       </bean>
+</beans>

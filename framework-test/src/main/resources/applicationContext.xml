@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+       <bean id="car1" class="org.china.framework.spring.model.Car" p:color="红色" p:price="10000" scope="prototype"/>
+       <bean id="foo" class="org.china.framework.spring.model.Foo" p:iDCode="好的1" scope="singleton" ></bean>
+
+       <bean id="car2" class="org.china.framework.spring.model.Car" >
+
+              <constructor-arg type="int">
+                     <value>4800</value>
+              </constructor-arg>
+
+              <constructor-arg type="java.lang.String">
+                     <value>黑色</value>
+              </constructor-arg>
+       </bean>
+
+       <bean id="car3" class="org.china.framework.spring.model.Car">
+              <constructor-arg type="java.lang.String" index="1">
+                     <value>宝马</value>
+              </constructor-arg>
+              <constructor-arg type="java.lang.String" index="0">
+                     <value>绿色</value>
+              </constructor-arg>
+              <constructor-arg type="int">
+                     <value>78999</value>
+              </constructor-arg>
+       </bean>
+       <bean id="carFactory" class="org.china.framework.spring.model.CarFactory" ></bean>
+
+       <bean id="car4" factory-bean="carFactory" factory-method="createrHongQi"></bean>
+
+       <bean id="car5" class="org.china.framework.spring.model.CarFactory" factory-method="createrStaticHOngQi"></bean>
+</beans>
