@@ -23,6 +23,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <spring.version>4.2.3.RELEASE</spring.version>
     <log4j.version>2.4.1</log4j.version>
+    <curator.version>3.0.0</curator.version>
 
   </properties>
 
@@ -72,6 +73,28 @@
         <artifactId>log4j-core</artifactId>
         <version>${log4j.version}</version>
       </dependency>
+      <!-- zk client -->
+      <dependency>
+        <groupId>org.apache.curator</groupId>
+        <artifactId>curator-framework</artifactId>
+        <version>${curator.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.curator</groupId>
+        <artifactId>curator-recipes</artifactId>
+        <version>${curator.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.curator</groupId>
+        <artifactId>curator-test</artifactId>
+        <version>${curator.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.curator</groupId>
+        <artifactId>curator-client</artifactId>
+        <version>${curator.version}</version>
+      </dependency>
+
     </dependencies>
   </dependencyManagement>
 </project>
