@@ -7,6 +7,6 @@ package org.china.framework.spring.curator.common;
  */
 public class CuratorCommon {
     // zookeeper path
-    public static final String CONNECTION_STRING = "127.0.0.1:2181,127.0.0.1:2182,127.0.0.1:2183";
+    public static final String CONNECTION_STRING = "192.168.6.130:2181";
     public static final String NAMESPACE = "crud";
 }

@@ -11,14 +11,15 @@ import java.util.concurrent.CountDownLatch;
  */
 public class Recipes_noLock {
     public static void main(String[] args) {
-        final CountDownLatch countDownLatch = new CountDownLatch(1);
+//        final CountDownLatch countDownLatch = new CountDownLatch(1);
        for(int i=0; i<10; i++){
            new Thread(new Runnable() {
                @Override
                public void run() {
                    try {
-                       countDownLatch.await();
-                   } catch (InterruptedException e) {
+//                       countDownLatch.await();
+                       Thread.sleep(5000);
+                   } catch (Exception e) {
                        e.printStackTrace();
                    }
                    SimpleDateFormat simpleFormatter = new SimpleDateFormat("HH:mm:ss|SSS");
@@ -28,6 +29,6 @@ public class Recipes_noLock {
            }).start();
 
        }
-       countDownLatch.countDown();
+//       countDownLatch.countDown();
     }
 }
