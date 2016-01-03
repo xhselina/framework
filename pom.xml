@@ -24,6 +24,7 @@
     <spring.version>4.2.3.RELEASE</spring.version>
     <log4j.version>2.4.1</log4j.version>
     <curator.version>3.0.0</curator.version>
+    <junit.version>4.12</junit.version>
 
   </properties>
 
@@ -94,6 +95,13 @@
         <artifactId>curator-client</artifactId>
         <version>${curator.version}</version>
       </dependency>
+
+      <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>${junit.version}</version>
+      </dependency>
+
 
     </dependencies>
   </dependencyManagement>
