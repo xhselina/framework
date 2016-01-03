@@ -10,6 +10,58 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>framework-dao</artifactId>
+    <name>framework-dao</name>
+    <url>http://maven.apache.org</url>
+    <description>框架通用DAO操作类</description>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>org.china.framework</groupId>
+            <artifactId>framework-model</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.china.framework</groupId>
+            <artifactId>framework-core</artifactId>
+        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.hibernate</groupId>-->
+            <!--<artifactId>hibernate-validator</artifactId>-->
+        <!--</dependency>-->
 
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+        </dependency>
+
+        <!--mybatis start  -->
+
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+            <type>jar</type>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis-spring</artifactId>
+            <type>jar</type>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis-ehcache</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <!--mybatis end  -->
+    </dependencies>
 
 </project>

@@ -21,10 +21,19 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <spring.version>4.2.3.RELEASE</spring.version>
+    <org.springframework.version>4.2.3.RELEASE</org.springframework.version>
     <log4j.version>2.4.1</log4j.version>
     <curator.version>3.0.0</curator.version>
     <junit.version>4.12</junit.version>
+
+    <mybatis.version>3.3.0</mybatis.version>
+    <mybatis.spring.version>1.2.3</mybatis.spring.version>
+    <mybatis.ehcache.version>1.0.0</mybatis.ehcache.version>
+    <hazelacst.version>3.5.3</hazelacst.version>
+    <druid.version>1.0.16</druid.version>
+
+    <mysql.version>5.1.38</mysql.version>
+    <commons-lang.version>2.6</commons-lang.version>
 
   </properties>
 
@@ -32,48 +41,185 @@
 
     <dependencies>
 
+      <!--framework 各个模块-->
+      <dependency>
+        <groupId>org.china.framework</groupId>
+        <artifactId>framework-dao</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.china.framework</groupId>
+        <artifactId>framework-core</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.china.framework</groupId>
+        <artifactId>framework-interfaces</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.china.framework</groupId>
+        <artifactId>framework-services</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.china.framework</groupId>
+        <artifactId>framework-model</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+
       <!-- spring start -->
       <dependency>
         <groupId>org.springframework</groupId>
         <artifactId>spring-core</artifactId>
-        <version>${spring.version}</version>
+        <version>${org.springframework.version}</version>
       </dependency>
 
+      <!-- Expression Language (depends on spring-core) Define this if you use
+          Spring Expression APIs (org.springframework.expression.*) -->
       <dependency>
         <groupId>org.springframework</groupId>
-        <artifactId>spring-context</artifactId>
-        <version>${spring.version}</version>
+        <artifactId>spring-expression</artifactId>
+        <version>${org.springframework.version}</version>
       </dependency>
 
+      <!-- Bean Factory and JavaBeans utilities (depends on spring-core) Define
+          this if you use Spring Bean APIs (org.springframework.beans.*) -->
       <dependency>
         <groupId>org.springframework</groupId>
         <artifactId>spring-beans</artifactId>
-        <version>${spring.version}</version>
+        <version>${org.springframework.version}</version>
       </dependency>
 
+      <!-- Aspect Oriented Programming (AOP) Framework (depends on spring-core,
+          spring-beans) Define this if you use Spring AOP APIs (org.springframework.aop.*) -->
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-aop</artifactId>
+        <version>${org.springframework.version}</version>
+      </dependency>
+
+      <!-- Application Context (depends on spring-core, spring-expression, spring-aop,
+          spring-beans) This is the central artifact for Spring's Dependency Injection
+          Container and is generally always defined -->
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-context</artifactId>
+        <version>${org.springframework.version}</version>
+      </dependency>
+
+      <!-- Various Application Context utilities, including EhCache, JavaMail,
+          Quartz, and Freemarker integration Define this if you need any of these integrations -->
       <dependency>
         <groupId>org.springframework</groupId>
         <artifactId>spring-context-support</artifactId>
-        <version>${spring.version}</version>
+        <version>${org.springframework.version}</version>
       </dependency>
 
+      <!-- Transaction Management Abstraction (depends on spring-core, spring-beans,
+          spring-aop, spring-context) Define this if you use Spring Transactions or
+          DAO Exception Hierarchy (org.springframework.transaction.*/org.springframework.dao.*) -->
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-tx</artifactId>
+        <version>${org.springframework.version}</version>
+      </dependency>
+
+      <!-- JDBC Data Access Library (depends on spring-core, spring-beans, spring-context,
+          spring-tx) Define this if you use Spring's JdbcTemplate API (org.springframework.jdbc.*) -->
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-jdbc</artifactId>
+        <version>${org.springframework.version}</version>
+      </dependency>
+
+      <!-- Object-to-Relation-Mapping (ORM) integration with Hibernate, JPA,
+          and iBatis. (depends on spring-core, spring-beans, spring-context, spring-tx)
+          Define this if you need ORM (org.springframework.orm.*) -->
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-orm</artifactId>
+        <version>${org.springframework.version}</version>
+      </dependency>
+
+      <!-- Object-to-XML Mapping (OXM) abstraction and integration with JAXB,
+          JiBX, Castor, XStream, and XML Beans. (depends on spring-core, spring-beans,
+          spring-context) Define this if you need OXM (org.springframework.oxm.*) -->
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-oxm</artifactId>
+        <version>${org.springframework.version}</version>
+      </dependency>
+
+      <!-- Web application development utilities applicable to both Servlet and
+          Portlet Environments (depends on spring-core, spring-beans, spring-context)
+          Define this if you use Spring MVC, or wish to use Struts, JSF, or another
+          web framework with Spring (org.springframework.web.*) -->
       <dependency>
         <groupId>org.springframework</groupId>
         <artifactId>spring-web</artifactId>
-        <version>${spring.version}</version>
+        <version>${org.springframework.version}</version>
       </dependency>
+
+      <!-- Spring MVC for Servlet Environments (depends on spring-core, spring-beans,
+          spring-context, spring-web) Define this if you use Spring MVC with a Servlet
+          Container such as Apache Tomcat (org.springframework.web.servlet.*) -->
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-webmvc</artifactId>
+        <version>${org.springframework.version}</version>
+      </dependency>
+
+      <!-- Spring MVC for Portlet Environments (depends on spring-core, spring-beans,
+          spring-context, spring-web) Define this if you use Spring MVC with a Portlet
+          Container (org.springframework.web.portlet.*) -->
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-webmvc-portlet</artifactId>
+        <version>${org.springframework.version}</version>
+      </dependency>
+
+      <!-- Support for testing Spring applications with tools such as JUnit and
+          TestNG This artifact is generally always defined with a 'test' scope for
+          the integration testing framework and unit testing stubs -->
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-test</artifactId>
+        <version>${org.springframework.version}</version>
+        <scope>test</scope>
+      </dependency>
+      <!-- spring end -->
       <!-- spring end-->
-      <!-- log4j2 -->
+      <!--&lt;!&ndash; log4j2 &ndash;&gt;-->
+      <!--<dependency>-->
+        <!--<groupId>org.apache.logging.log4j</groupId>-->
+        <!--<artifactId>log4j-api</artifactId>-->
+        <!--<version>${log4j.version}</version>-->
+      <!--</dependency>-->
+      <!--<dependency>-->
+        <!--<groupId>org.apache.logging.log4j</groupId>-->
+        <!--<artifactId>log4j-core</artifactId>-->
+        <!--<version>${log4j.version}</version>-->
+      <!--</dependency>-->
+
+      <!-- log4j -->
       <dependency>
-        <groupId>org.apache.logging.log4j</groupId>
-        <artifactId>log4j-api</artifactId>
-        <version>${log4j.version}</version>
+        <groupId>log4j</groupId>
+        <artifactId>log4j</artifactId>
+        <version>1.2.17</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-log4j12</artifactId>
+        <version>1.7.5</version>
       </dependency>
       <dependency>
-        <groupId>org.apache.logging.log4j</groupId>
-        <artifactId>log4j-core</artifactId>
-        <version>${log4j.version}</version>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-nop</artifactId>
+        <version>1.7.5</version>
       </dependency>
+
       <!-- zk client -->
       <dependency>
         <groupId>org.apache.curator</groupId>
@@ -100,6 +246,115 @@
         <groupId>junit</groupId>
         <artifactId>junit</artifactId>
         <version>${junit.version}</version>
+        <scope>test</scope>
+      </dependency>
+
+      <!-- mysql -->
+      <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+        <version>${mysql.version}</version>
+      </dependency>
+
+      <!-- apache commons lang -->
+      <dependency>
+        <groupId>commons-lang</groupId>
+        <artifactId>commons-lang</artifactId>
+        <version>${commons-lang.version}</version>
+      </dependency>
+
+      <!-- admin 2015-10-28 add mybatis-->
+      <dependency>
+        <groupId>org.mybatis</groupId>
+        <artifactId>mybatis</artifactId>
+        <version>${mybatis.version}</version>
+        <scope>compile</scope>
+      </dependency>
+
+      <dependency>
+        <groupId>org.mybatis</groupId>
+        <artifactId>mybatis-spring</artifactId>
+        <version>${mybatis.spring.version}</version>
+        <type>jar</type>
+        <exclusions>
+          <exclusion>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+          </exclusion>
+
+          <exclusion>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+          </exclusion>
+        </exclusions>
+      </dependency>
+      <dependency>
+        <groupId>org.mybatis</groupId>
+        <artifactId>mybatis-ehcache</artifactId>
+        <version>${mybatis.ehcache.version}</version>
+        <exclusions>
+          <exclusion>
+            <groupId>net.sf.ehcache</groupId>
+            <artifactId>ehcache-core</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+          </exclusion>
+        </exclusions>
+      </dependency>
+
+      <dependency>
+        <groupId>com.hazelcast</groupId>
+        <artifactId>hazelcast</artifactId>
+        <version>${hazelacst.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>com.hazelcast</groupId>
+        <artifactId>hazelcast-client</artifactId>
+        <version>${hazelacst.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>com.alibaba</groupId>
+        <artifactId>druid</artifactId>
+        <version>${druid.version}</version>
+      </dependency>
+
+      <!-- springmvc 3.x 集成jackson 比jsonlib 效率高很多 -->
+      <dependency>
+        <groupId>org.codehaus.jackson</groupId>
+        <artifactId>jackson-core-asl</artifactId>
+        <version>1.9.13</version>
+      </dependency>
+      <dependency>
+        <groupId>org.codehaus.jackson</groupId>
+        <artifactId>jackson-mapper-asl</artifactId>
+        <version>1.9.13</version>
+      </dependency>
+      <dependency>
+        <groupId>com.fasterxml.jackson.dataformat</groupId>
+        <artifactId>jackson-dataformat-xml</artifactId>
+        <version>2.3.0</version>
+        <exclusions>
+          <exclusion>
+            <artifactId>stax2-api</artifactId>
+            <groupId>org.codehaus.woodstox</groupId>
+          </exclusion>
+        </exclusions>
       </dependency>
 
 

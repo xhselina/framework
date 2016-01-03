@@ -1,15 +1,16 @@
 package org.china.framework.spring.设计模式.命令模式.command;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.china.framework.spring.设计模式.命令模式.receiver.Receiver;
 import org.china.framework.spring.设计模式.命令模式.receiver.ReceiverImpl1;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Created by jeffrey on 15-11-28.
  */
 public class CommandImpl1 extends  Command {
-    static final Logger LOGGER = LogManager.getLogger();
+    private static final Logger LOGGER = LoggerFactory.getLogger(CommandImpl1.class);
+
 
     //默认的接收人
     public CommandImpl1(){
