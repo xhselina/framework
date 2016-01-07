@@ -11,5 +11,11 @@
 
     <artifactId>framework-all</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.china.framework</groupId>
+            <artifactId>framework-service</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>

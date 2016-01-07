@@ -18,15 +18,8 @@
     <dependencies>
         <dependency>
             <groupId>org.china.framework</groupId>
-            <artifactId>framework-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.china.framework</groupId>
-            <artifactId>framework-dao</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.china.framework</groupId>
-            <artifactId>framework-model</artifactId>
+            <artifactId>framework-all</artifactId>
+            <version>${project.version}</version>
         </dependency>
 
         <dependency>
@@ -42,6 +35,16 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
         </dependency>
 
         <dependency>

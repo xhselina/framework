@@ -11,8 +11,8 @@
     <module>framework-dao</module>
     <module>framework-service</module>
     <module>framework-model</module>
-    <module>framework-demo</module>
     <module>framework-test</module>
+    <module>framework-demo</module>
   </modules>
   <packaging>pom</packaging>
 
@@ -54,12 +54,7 @@
       </dependency>
       <dependency>
         <groupId>org.china.framework</groupId>
-        <artifactId>framework-interfaces</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.china.framework</groupId>
-        <artifactId>framework-services</artifactId>
+        <artifactId>framework-service</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
