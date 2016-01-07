@@ -1,6 +1,5 @@
 package org.framework.demo;
 
-import org.framework.demo.controller.UserController;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
