@@ -45,66 +45,29 @@
 			<value>proxool.default</value>
 		</property>
 	</bean> -->
-	<!-- C3P0 数据源 -->
-    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
-        <property name="driverClass" value="${hibernate.connection.driver_class}"/> 
-        <property name="jdbcUrl" value="${hibernate.connection.url}"/>
-        <property name="properties"> 
-            <props> 
-                <prop key="user">${hibernate.connection.username}</prop>
-                <prop key="password">${hibernate.connection.password}</prop>
-            </props> 
-        </property>
-    </bean>
-    
-    <!-- SessionFactory -->
-	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
-		<property name="dataSource" ref="dataSource" />
-		<!-- 这里只扫描存放实体类的包 -->
-		<property name="packagesToScan" value="china.home.daughter.*.*.entity*"/>
-		<property name="hibernateProperties">
-			<props>
-<!-- 				<prop key="hibernate.current_session_context_class">org.springframework.orm.hibernate4.SpringSessionContext</prop> -->
-				<prop key="hibernate.dialect">${hibernate.dialect}</prop>
-				<prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
-				<prop key="hibernate.format_sql">${hibernate.format_sql}</prop>
-				<prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>
-				<prop key="hibernate.cache.provider_class">${hibernate.cache.provider_class}</prop>
-				<prop key="hibernate.cache.use_query_cache">${hibernate.cache.use_query_cache}</prop>	
-				<prop key="hibernate.cache.use_second_level_cache">${hibernate.cache.use_second_level_cache}</prop>
-			</props>
-		</property>
+	<!-- 德鲁伊 数据源 -->
+	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+		<property name="dbType" value="${db}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+		<property name="maxActive" value="20" />
+		<property name="initialSize" value="1" />
+		<property name="maxWait" value="60000" />
+		<property name="minIdle" value="1" />
+		<property name="timeBetweenEvictionRunsMillis" value="3000" /> <!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
+		<property name="minEvictableIdleTimeMillis" value="300000" /> <!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
+		<property name="validationQuery" value="SELECT 'x'" />
+		<property name="testWhileIdle" value="true" />
+		<property name="testOnBorrow" value="false" />
+		<property name="testOnReturn" value="false" />
+		<!-- 打开PSCache，并且指定每个连接上PSCache的大小 -->
+		<property name="poolPreparedStatements" value="true" />
+		<property name="maxPoolPreparedStatementPerConnectionSize" value="20" />
+		<!-- 关闭长时间不使用的连接 -->
+		<property name="removeAbandoned" value="true" />  <!-- 打开removeAbandoned功能 -->
+		<property name="removeAbandonedTimeout" value="1800" /> <!-- 1800秒，也就是30分钟 -->
+		<property name="logAbandoned" value="true" /> <!-- 关闭abanded连接时输出错误日志 -->
 	</bean>
-	
-	<!-- 配置事务管理 -->
-	<bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
-		<property name="sessionFactory" ref="sessionFactory" />
-	</bean>
-	<!-- 指定使用cglib -->
-	<aop:aspectj-autoproxy proxy-target-class="true" /> 
-	
-	<!-- 配置注解实现管理事务（cglib：proxy-target-class="true"） -->
-	<tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true" />
-	
-	<!-- 配置事务的传播特性 -->
-	<tx:advice id="txAdvice" transaction-manager="transactionManager">
-		<tx:attributes>
-			<tx:method name="add*" propagation="REQUIRED" />
-			<tx:method name="edit*" propagation="REQUIRED" />
-			<tx:method name="remove*" propagation="REQUIRED" />
-			<tx:method name="save*" propagation="REQUIRED" />
-			<tx:method name="update*" propagation="REQUIRED" />
-			<tx:method name="delete*" propagation="REQUIRED" />
-			<tx:method name="batchUpdate" propagation="REQUIRED" />
-			<tx:method name="get*" read-only="true" propagation="REQUIRED" />
-			<tx:method name="*" read-only="true" />
-		</tx:attributes>
-	</tx:advice>
-	
-	<!-- 配置事务的切入点 -->
-	<aop:config expose-proxy="true">
-		<!-- 一般情况下是给service层的方法加事务 -->
-		<aop:pointcut id="targetMethod" expression="execution(* china.home.daughter..service..impl.*.*(..))" />
-		<aop:advisor advice-ref="txAdvice" pointcut-ref="targetMethod" />
-	</aop:config>
+
 </beans>
