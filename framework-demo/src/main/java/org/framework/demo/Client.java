@@ -1,5 +1,6 @@
 package org.framework.demo;
 
+import org.framework.demo.controller.UserController;
 import org.framework.springboot.BaseSpringBootApplication;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -17,16 +18,9 @@ import org.springframework.web.bind.annotation.RestController;
  */
 //@SpringBootApplication
 //@ImportResource("classpath:spring/applicationContext.xml")
-@RestController
 public class Client extends BaseSpringBootApplication {
 
-    @RequestMapping("/")
-    @ResponseBody
-    String home() {
-        return "Hello World，你妹!";
-    }
-
     public static void main(String[] args) throws Exception {
-        SpringApplication.run(Client.class, args);
+        SpringApplication.run(UserController.class, args);
     }
 }
