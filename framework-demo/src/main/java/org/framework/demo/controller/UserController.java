@@ -2,6 +2,8 @@ package org.framework.demo.controller;
 
 import org.framework.demo.model.User;
 import org.framework.demo.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -17,15 +19,16 @@ import javax.servlet.http.HttpServletResponse;
  * @author junhui.ji
  *
  */
-@RestController
+@Controller
+@RequestMapping(value = "/user")
 public class UserController {
-	@Resource
+	@Autowired
 	private UserService userService;
 
-	@RequestMapping("/")
+	@RequestMapping(value = "/hello")
 	@ResponseBody
-	public String hello(){
-		return "Hello World123!";
+	public String  hello(){
+		return  "hello";
 	}
 
 	/**
@@ -37,8 +40,13 @@ public class UserController {
 		return "user/user";
 	}
 
-	public void save(HttpServletRequest request,ModelMap modelMap){
-
+	@RequestMapping("/save")
+	@ResponseBody
+	public String save(HttpServletRequest request,ModelMap modelMap){
+		User user = new User();
+		user.setName("111");
+		int num = userService.add(user);
+		return "成功保存" + num + "条记录";
 	}
 
 	/**

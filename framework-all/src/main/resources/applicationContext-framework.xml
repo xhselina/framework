@@ -14,8 +14,13 @@
 	<!-- 指定使用cglib -->
 	<aop:aspectj-autoproxy proxy-target-class="true" />
 
-	<!-- 使用 annotation 自动注册bean,并检查@Controller, @Service, @Repository注解已被注入 这里不全部扫描是不想跟spring3mvc-servlet.xml中的扫描冲突-->
-	<context:component-scan base-package="org.framework.*.*.service,org.framework.*.*.dao"/>
+	<!-- 使用 annotation 自动注册bean,并检查@Controller, @Service, @Repository注解已被注入-->
+	<!--<context:component-scan base-package="org.framework.*.*.service,org.framework.*.*.dao"/>-->
+	<context:component-scan base-package="org.framework.**.service,org.framework.**.dao">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Repository"></context:include-filter>
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Service"></context:include-filter>
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Component"></context:include-filter>
+	</context:component-scan>
     <!--扫描properties配置文件-->
     <bean id="propertyPlaceholderConfigurer" class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer">
 		<property name="locations">
@@ -32,12 +37,21 @@
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<!-- 自动扫描mapping.xml文件 -->
-		<property name="mapperLocations" value="classpath:org/framework/**/mappering/*.xml"></property>
+		<property name="mapperLocations" value="classpath:org/framework/**/mapper/*.xml"></property>
 	</bean>
 
-	<bean id="frameworkSqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
-		<constructor-arg index="0" ref="dataSource" />
+	<bean id="SqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg index="0" ref="sqlSessionFactory" />
 	</bean>
+
+	<bean id="myBatisBaseDao" class="org.framework.dao.impl.MyBatisBaseDaoImpl">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+		<property name="sqlSessionTemplate" ref="SqlSessionTemplate" />
+	</bean>
+
+	<!--<bean id="frameworkSqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">-->
+		<!--<constructor-arg index="0" ref="dataSource" />-->
+	<!--</bean>-->
 
 	<!-- (事务管理)transaction manager, use JtaTransactionManager for global tx -->
 	<bean id="transactionManager"

@@ -1,9 +1,11 @@
-package org.framework.service.impl.org.framework.services;
+package org.framework.service.impl;
 
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.framework.dao.MyBatisBaseDao;
 import org.framework.service.BaseService;
 import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.io.Serializable;
 import java.util.List;
@@ -11,9 +13,11 @@ import java.util.List;
 /**
  * Created by jeffrey on 15-11-5.
  */
+@Service
 public class MyBatisBaseServiceImpl<T, PK extends Serializable> implements BaseService<T, PK> {
-
+    @Autowired
     private MyBatisBaseDao myBatisBaseDao;
+
     public int add(T object) {
         return myBatisBaseDao.add(object);
     }

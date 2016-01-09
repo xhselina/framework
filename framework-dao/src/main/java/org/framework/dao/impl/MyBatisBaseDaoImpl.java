@@ -10,6 +10,7 @@ import org.framework.dao.MyBatisBaseDao;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.io.Serializable;
 import java.lang.reflect.Method;
@@ -24,16 +25,17 @@ import java.util.Vector;
  * @Date 2012    2012-8-3		下午4:40:35
  * @since Ver 1.0
  */
-@Component(value = "myBatisBaseDao")
+@Repository(value = "myBatisBaseDao")
 public class MyBatisBaseDaoImpl<T, PK extends Serializable> implements MyBatisBaseDao<T, PK> {
 
     private static Logger logger = Logger.getLogger(MyBatisBaseDaoImpl.class);
     public static final ThreadLocal<Vector<SqlSession>> LOCAL_CONNECTION_HOLDER = new ThreadLocal<Vector<SqlSession>>();
-    @Autowired
-    private SqlSessionFactory sqlSessionFactory;
 
     @Autowired
-    private SqlSessionTemplate sqlSessionTemplate;
+    protected SqlSessionFactory sqlSessionFactory;
+
+    @Autowired
+    protected SqlSessionTemplate sqlSessionTemplate;
 
     /**
      * 插入
@@ -298,5 +300,22 @@ public class MyBatisBaseDaoImpl<T, PK extends Serializable> implements MyBatisBa
             logger.error(e.getMessage(), e);
             throw new RuntimeException(e.getMessage());
         }
+    }
+
+
+    public SqlSessionFactory getSqlSessionFactory() {
+        return sqlSessionFactory;
+    }
+
+    public void setSqlSessionFactory(SqlSessionFactory sqlSessionFactory) {
+        this.sqlSessionFactory = sqlSessionFactory;
+    }
+
+    public SqlSessionTemplate getSqlSessionTemplate() {
+        return sqlSessionTemplate;
+    }
+
+    public void setSqlSessionTemplate(SqlSessionTemplate sqlSessionTemplate) {
+        this.sqlSessionTemplate = sqlSessionTemplate;
     }
 }

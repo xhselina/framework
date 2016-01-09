@@ -9,5 +9,5 @@ import java.io.Serializable;
  *  userdao数据层接口
  * Created by junhuiji on 2016/1/7.
  */
-public interface UserDao<User,PK extends Serializable> extends BaseDao{
+public interface UserDao extends BaseDao<User,Long>{
 }
