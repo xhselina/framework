@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="myDauther">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta charset="utf-8">
@@ -10,33 +10,39 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="">
   <!-- Stylesheets -->
-  <link href="style/bootstrap.css" rel="stylesheet">
+  <link href="app/css/bootstrap.css" rel="stylesheet">
   <!-- Font awesome icon -->
-  <link rel="stylesheet" href="style/font-awesome.css">
+  <link rel="stylesheet" href="app/css/font-awesome.css">
   <!-- jQuery UI -->
-  <link rel="stylesheet" href="style/jquery-ui.css">
+  <link rel="stylesheet" href="app/css/jquery-ui.css">
   <!-- Calendar -->
-  <link rel="stylesheet" href="style/fullcalendar.css">
+  <link rel="stylesheet" href="app/css/fullcalendar.css">
   <!-- prettyPhoto -->
-  <link rel="stylesheet" href="style/prettyPhoto.css">
+  <link rel="stylesheet" href="app/css/prettyPhoto.css">
   <!-- Star rating -->
-  <link rel="stylesheet" href="style/rateit.css">
+  <link rel="stylesheet" href="app/css/rateit.css">
   <!-- Date picker -->
-  <link rel="stylesheet" href="style/bootstrap-datetimepicker.min.css">
+  <link rel="stylesheet" href="app/css/bootstrap-datetimepicker.min.css">
   <!-- CLEditor -->
-  <link rel="stylesheet" href="style/jquery.cleditor.css">
+  <link rel="stylesheet" href="app/css/jquery.cleditor.css">
   <!-- Uniform -->
-  <link rel="stylesheet" href="style/uniform.default.css">
+  <link rel="stylesheet" href="css/uniform.default.css">
   <!-- Bootstrap toggle -->
-  <link rel="stylesheet" href="style/bootstrap-switch.css">
+  <link rel="stylesheet" href="app/css/bootstrap-switch.css">
   <!-- Main stylesheet -->
-  <link href="style/style.css" rel="stylesheet">
+  <link href="app/css/style.css" rel="stylesheet">
   <!-- Widgets stylesheet -->
-  <link href="style/widgets.css" rel="stylesheet">
+  <link href="app/css/widgets.css" rel="stylesheet">
 
+  <script src="app/lib/angular/angular.js"></script>
+  <script src="app/js/app.js"></script>
+  <script src="app/js/services.js"></script>
+  <script src="app/js/controllers.js"></script>
+  <script src="app/js/filters.js"></script>
+  <script src="app/js/directives.js"></script>
   <!-- HTML5 Support for IE -->
   <!--[if lt IE 9]>
-  <script src="js/html5shim.js"></script>
+  <script src="app/lib/html5shim.js"></script>
   <![endif]-->
 
   <!-- Favicon -->
@@ -142,7 +148,7 @@
           <ul class="dropdown-menu">
             <li><a href="#"><i class="icon-user"></i> 资料</a></li>
             <li><a href="#"><i class="icon-cogs"></i> 设置</a></li>
-            <li><a href="login.html"><i class="icon-off"></i> 退出</a></li>
+            <li><a href="app/module/login.html"><i class="icon-off"></i> 退出</a></li>
           </ul>
         </li>
 
@@ -360,37 +366,37 @@
       </li>
       <li class="has_sub"><a href="#"><i class="icon-list-alt"></i> 插件页面  <span class="pull-right"><i class="icon-chevron-right"></i></span></a>
         <ul>
-          <li><a href="widgets1.html">插件页面 #1</a></li>
-          <li><a href="widgets2.html">插件页面 #2</a></li>
-          <li><a href="widgets3.html">插件页面 #3</a></li>
+          <li><a href="app/module/widgets1.html">插件页面 #1</a></li>
+          <li><a href="app/module/widgets2.html">插件页面 #2</a></li>
+          <li><a href="app/module/widgets3.html">插件页面 #3</a></li>
         </ul>
       </li>
       <li class="has_sub"><a href="#"><i class="icon-file-alt"></i> 页面模块1 <span class="pull-right"><i class="icon-chevron-right"></i></span></a>
         <ul>
-          <li><a href="post.html">表单Post</a></li>
-          <li><a href="login.html">登录页</a></li>
-          <li><a href="register.html">注册页面</a></li>
-          <li><a href="support.html">帮助页</a></li>
-          <li><a href="invoice.html">购物清单</a></li>
-          <li><a href="profile.html">个人资料</a></li>
-          <li><a href="gallery.html">相册页面</a></li>
+          <li><a href="app/module/post.html">表单Post</a></li>
+          <li><a href="app/module/login.html">登录页</a></li>
+          <li><a href="app/module/register.html">注册页面</a></li>
+          <li><a href="app/module/support.html">帮助页</a></li>
+          <li><a href="app/module/invoice.html">购物清单</a></li>
+          <li><a href="app/module/profile.html">个人资料</a></li>
+          <li><a href="app/module/gallery.html">相册页面</a></li>
         </ul>
       </li>
       <li class="has_sub"><a href="#"><i class="icon-file-alt"></i> 页面模块2  <span class="pull-right"><i class="icon-chevron-right"></i></span></a>
         <ul>
-          <li><a href="media.html">媒体</a></li>
-          <li><a href="statement.html">描述</a></li>
-          <li><a href="error.html">错误</a></li>
-          <li><a href="error-log.html">错误日志</a></li>
-          <li><a href="calendar.html">日历</a></li>
-          <li><a href="grid.html">网格</a></li>
+          <li><a href="app/module/media.html">媒体</a></li>
+          <li><a href="app/module/statement.html">描述</a></li>
+          <li><a href="app/module/error.html">错误</a></li>
+          <li><a href="app/module/error-log.html">错误日志</a></li>
+          <li><a href="app/module/calendar.html">日历</a></li>
+          <li><a href="app/module/grid.html">网格</a></li>
         </ul>
       </li>
-      <li><a href="charts.html"><i class="icon-bar-chart"></i>图表</a></li>
-      <li><a href="tables.html"><i class="icon-table"></i>表格</a></li>
-      <li><a href="forms.html"><i class="icon-tasks"></i>表单</a></li>
-      <li><a href="ui.html"><i class="icon-magic"></i>UI图标</a></li>
-      <li><a href="calendar.html"><i class="icon-calendar"></i>日历</a></li>
+      <li><a href="app/module/charts.html"><i class="icon-bar-chart"></i>图表</a></li>
+      <li><a href="app/module/tables.html"><i class="icon-table"></i>表格</a></li>
+      <li><a href="app/module/forms.html"><i class="icon-tasks"></i>表单</a></li>
+      <li><a href="app/module/ui.html"><i class="icon-magic"></i>UI图标</a></li>
+      <li><a href="app/module/calendar.html"><i class="icon-calendar"></i>日历</a></li>
     </ul>
   </div>
 
@@ -572,7 +578,7 @@
                     <li class="by-me">
                       <!-- Use the class "pull-left" in avatar -->
                       <div class="avatar pull-left">
-                        <img src="img/user.jpg" alt=""/>
+                        <img src="app/img/user.jpg" alt=""/>
                       </div>
 
                       <div class="chat-content">
@@ -587,7 +593,7 @@
                     <li class="by-other">
                       <!-- Use the class "pull-right" in avatar -->
                       <div class="avatar pull-right">
-                        <img src="img/user.jpg" alt=""/>
+                        <img src="app/img/user.jpg" alt=""/>
                       </div>
 
                       <div class="chat-content">
@@ -600,7 +606,7 @@
 
                     <li class="by-me">
                       <div class="avatar pull-left">
-                        <img src="img/user.jpg" alt=""/>
+                        <img src="app/img/user.jpg" alt=""/>
                       </div>
 
                       <div class="chat-content">
@@ -613,7 +619,7 @@
                     <li class="by-other">
                       <!-- Use the class "pull-right" in avatar -->
                       <div class="avatar pull-right">
-                        <img src="img/user.jpg" alt=""/>
+                        <img src="app/img/user.jpg" alt=""/>
                       </div>
 
                       <div class="chat-content">
@@ -711,27 +717,27 @@
                     <th>Visits</th>
                   </tr>
                   <tr>
-                    <td><img src="img/icons/chrome.png" alt="" />
+                    <td><img src="app/img/icons/chrome.png" alt="" />
                     <td>Google Chrome</td>
                     <td>3,005</td>
                   </tr>
                   <tr>
-                    <td><img src="img/icons/firefox.png" alt="" />
+                    <td><img src="app/img/icons/firefox.png" alt="" />
                     <td>Mozilla Firefox</td>
                     <td>2,505</td>
                   </tr>
                   <tr>
-                    <td><img src="img/icons/ie.png" alt="" />
+                    <td><img src="app/img/icons/ie.png" alt="" />
                     <td>Internet Explorer</td>
                     <td>1,405</td>
                   </tr>
                   <tr>
-                    <td><img src="img/icons/opera.png" alt="" />
+                    <td><img src="app/img/icons/opera.png" alt="" />
                     <td>Opera</td>
                     <td>4,005</td>
                   </tr>
                   <tr>
-                    <td><img src="img/icons/safari.png" alt="" />
+                    <td><img src="app/img/icons/safari.png" alt="" />
                     <td>Safari</td>
                     <td>505</td>
                   </tr>
@@ -981,36 +987,36 @@
 <span class="totop"><a href="#"><i class="icon-chevron-up"></i></a></span>
 
 <!-- JS -->
-<script src="js/jquery.js"></script> <!-- jQuery -->
-<script src="js/bootstrap.js"></script> <!-- Bootstrap -->
-<script src="js/jquery-ui-1.9.2.custom.min.js"></script> <!-- jQuery UI -->
-<script src="js/fullcalendar.min.js"></script> <!-- Full Google Calendar - Calendar -->
-<script src="js/jquery.rateit.min.js"></script> <!-- RateIt - Star rating -->
-<script src="js/jquery.prettyPhoto.js"></script> <!-- prettyPhoto -->
+<script src="app/lib/jquery.js"></script> <!-- jQuery -->
+<script src="app/lib/bootstrap.js"></script> <!-- Bootstrap -->
+<script src="app/lib/jquery-ui-1.9.2.custom.min.js"></script> <!-- jQuery UI -->
+<script src="app/lib/fullcalendar.min.js"></script> <!-- Full Google Calendar - Calendar -->
+<script src="app/lib/jquery.rateit.min.js"></script> <!-- RateIt - Star rating -->
+<script src="app/lib/jquery.prettyPhoto.js"></script> <!-- prettyPhoto -->
 
 <!-- jQuery Flot -->
-<script src="js/excanvas.min.js"></script>
-<script src="js/jquery.flot.js"></script>
-<script src="js/jquery.flot.resize.js"></script>
-<script src="js/jquery.flot.pie.js"></script>
-<script src="js/jquery.flot.stack.js"></script>
+<script src="app/lib/excanvas.min.js"></script>
+<script src="app/lib/jquery.flot.js"></script>
+<script src="app/lib/jquery.flot.resize.js"></script>
+<script src="app/lib/jquery.flot.pie.js"></script>
+<script src="app/lib/jquery.flot.stack.js"></script>
 
 <!-- jQuery Notification - Noty -->
-<script src="js/jquery.noty.js"></script> <!-- jQuery Notify -->
-<script src="js/themes/default.js"></script> <!-- jQuery Notify -->
-<script src="js/layouts/bottom.js"></script> <!-- jQuery Notify -->
-<script src="js/layouts/topRight.js"></script> <!-- jQuery Notify -->
-<script src="js/layouts/top.js"></script> <!-- jQuery Notify -->
+<script src="app/lib/jquery.noty.js"></script> <!-- jQuery Notify -->
+<script src="app/lib/themes/default.js"></script> <!-- jQuery Notify -->
+<script src="app/lib/layouts/bottom.js"></script> <!-- jQuery Notify -->
+<script src="app/lib/layouts/topRight.js"></script> <!-- jQuery Notify -->
+<script src="app/lib/layouts/top.js"></script> <!-- jQuery Notify -->
 <!-- jQuery Notification ends -->
 
-<script src="js/sparklines.js"></script> <!-- Sparklines -->
-<script src="js/jquery.cleditor.min.js"></script> <!-- CLEditor -->
-<script src="js/bootstrap-datetimepicker.min.js"></script> <!-- Date picker -->
-<script src="js/jquery.uniform.min.js"></script> <!-- jQuery Uniform -->
-<script src="js/bootstrap-switch.min.js"></script> <!-- Bootstrap Toggle -->
-<script src="js/filter.js"></script> <!-- Filter for support page -->
-<script src="js/custom.js"></script> <!-- Custom codes -->
-<script src="js/charts.js"></script> <!-- Charts & Graphs -->
+<script src="app/lib/sparklines.js"></script> <!-- Sparklines -->
+<script src="app/lib/jquery.cleditor.min.js"></script> <!-- CLEditor -->
+<script src="app/lib/bootstrap-datetimepicker.min.js"></script> <!-- Date picker -->
+<script src="lib/jquery.uniform.min.js"></script> <!-- jQuery Uniform -->
+<script src="app/lib/bootstrap-switch.min.js"></script> <!-- Bootstrap Toggle -->
+<script src="app/lib/filter.js"></script> <!-- Filter for support page -->
+<script src="app/lib/custom.js"></script> <!-- Custom codes -->
+<script src="app/lib/charts.js"></script> <!-- Charts & Graphs -->
 
 <!-- Script for this page -->
 <script type="text/javascript">
