@@ -1,22 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-		xmlns="http://java.sun.com/xml/ns/javaee" 
-		xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_3_1.xsd"
-		xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" 
-		id="WebApp_ID" version="3.1">
-		
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee"
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+	http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+
 	<display-name>framework-demo</display-name>
-	 <context-param>
-	 <param-name>log4jConfigLocation</param-name>
-	 <param-value>/WEB-INF/classes/log4j/log4j.properties</param-value>
-	 </context-param>
+	<context-param>
+		<param-name>log4jConfigLocation</param-name>
+		<param-value>/WEB-INF/classes/log4j/log4j.properties</param-value>
+	</context-param>
 	<!--<context-param>-->
-		<!--<param-name>propertyFile</param-name>-->
-		<!--<param-value>/WEB-INF/classes/hibernate/proxool.properties</param-value>-->
+	<!--<param-name>propertyFile</param-name>-->
+	<!--<param-value>/WEB-INF/classes/hibernate/proxool.properties</param-value>-->
 	<!--</context-param>-->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>/WEB-INF/classes/spring/applicationContext.xml</param-value>
+		<param-value>classpath:spring/application*.xml</param-value>
 	</context-param>
 
 	<!-- log4j Listener -->
@@ -31,7 +30,7 @@
 
 	<!-- 系统初始化监听 一般放在spring监听后边 否则初始化的时候会出现找不到类的情况 -->
 	<!--<listener>-->
-		<!--<listener-class>org.framework.demo.init.SystemInit</listener-class>-->
+	<!--<listener-class>org.framework.demo.init.SystemInit</listener-class>-->
 	<!--</listener>-->
 
 
@@ -81,16 +80,16 @@
 	</filter-mapping>
 
 	<!--<filter>-->
-		<!--<filter-name>drakeAuthFilter</filter-name>-->
-		<!--<filter-class>cn.bidlink.drake.webapp.center.web.filter.DrakeAuthFilter</filter-class>-->
-		<!--<init-param>-->
-			<!--<param-name>excludeUrls</param-name>-->
-			<!--<param-value>*.js;*.jpg;*.gif;*.png;*.css;*.swf</param-value>-->
-		<!--</init-param>-->
+	<!--<filter-name>drakeAuthFilter</filter-name>-->
+	<!--<filter-class>cn.bidlink.drake.webapp.center.web.filter.DrakeAuthFilter</filter-class>-->
+	<!--<init-param>-->
+	<!--<param-name>excludeUrls</param-name>-->
+	<!--<param-value>*.js;*.jpg;*.gif;*.png;*.css;*.swf</param-value>-->
+	<!--</init-param>-->
 	<!--</filter>-->
 	<!--<filter-mapping>-->
-		<!--<filter-name>drakeAuthFilter</filter-name>-->
-		<!--<url-pattern>/*</url-pattern>-->
+	<!--<filter-name>drakeAuthFilter</filter-name>-->
+	<!--<url-pattern>/*</url-pattern>-->
 	<!--</filter-mapping>-->
 	<!-- spring分发器 -->
 	<servlet>
@@ -98,45 +97,45 @@
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
-			<param-value>/WEB-INF/classes/spring/spring3mvc-servlet.xml</param-value>
+			<param-value>classpath:spring/spring3mvc-servlet.xml</param-value>
 		</init-param>
 		<load-on-startup>0</load-on-startup>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>springmvc</servlet-name>
-		<url-pattern>*.html</url-pattern>
+		<!--<url-pattern>*.html</url-pattern>-->
 		<url-pattern>*.json</url-pattern>
 	</servlet-mapping>
 
 	<!-- cxf webservice -->
-<!-- 	<servlet> -->
-<!-- 		<servlet-name>cxf</servlet-name> -->
-<!-- 		<servlet-class>org.apache.cxf.transport.servlet.CXFServlet</servlet-class> -->
-<!-- 		<load-on-startup>1</load-on-startup> -->
-<!-- 	</servlet> -->
+	<!-- 	<servlet> -->
+	<!-- 		<servlet-name>cxf</servlet-name> -->
+	<!-- 		<servlet-class>org.apache.cxf.transport.servlet.CXFServlet</servlet-class> -->
+	<!-- 		<load-on-startup>1</load-on-startup> -->
+	<!-- 	</servlet> -->
 
-<!-- 	<servlet-mapping> -->
-<!-- 		<servlet-name>cxf</servlet-name> -->
-<!-- 		<url-pattern>/services/*</url-pattern> -->
-<!-- 	</servlet-mapping> -->
+	<!-- 	<servlet-mapping> -->
+	<!-- 		<servlet-name>cxf</servlet-name> -->
+	<!-- 		<url-pattern>/services/*</url-pattern> -->
+	<!-- 	</servlet-mapping> -->
 
 	<!--Axis2 webservice -->
 
-<!-- 	<servlet> -->
-<!-- 		<servlet-name>AxisServlet</servlet-name> -->
-<!-- 		<servlet-class>org.apache.axis2.transport.http.AxisServlet</servlet-class> -->
-<!-- 		<load-on-startup>1</load-on-startup> -->
-<!-- 	</servlet> -->
+	<!-- 	<servlet> -->
+	<!-- 		<servlet-name>AxisServlet</servlet-name> -->
+	<!-- 		<servlet-class>org.apache.axis2.transport.http.AxisServlet</servlet-class> -->
+	<!-- 		<load-on-startup>1</load-on-startup> -->
+	<!-- 	</servlet> -->
 
-<!-- 	<servlet-mapping> -->
-<!-- 		<servlet-name>AxisServlet</servlet-name> -->
-<!-- 		<url-pattern>/services/*</url-pattern> -->
-<!-- 	</servlet-mapping> -->
+	<!-- 	<servlet-mapping> -->
+	<!-- 		<servlet-name>AxisServlet</servlet-name> -->
+	<!-- 		<url-pattern>/services/*</url-pattern> -->
+	<!-- 	</servlet-mapping> -->
 
 
 
 	<!-- Welcome List -->
 	<welcome-file-list>
-		<welcome-file>/index.html</welcome-file>
+		<welcome-file>index.html</welcome-file>
 	</welcome-file-list>
 </web-app>
