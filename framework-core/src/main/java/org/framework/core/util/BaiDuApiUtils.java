@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 /**
- * 根据手机号，查询归属地  返回 json
+ *
  * baidu api utils
  * @version Ver 1.0
  * @Author <a href="mailto:jeffreyji@yeah.net">jeffrey</a>
@@ -24,6 +24,11 @@ public class BaiDuApiUtils {
     public final static  String url = "http://apis.baidu.com/apistore/mobilenumber/mobilenumber?";
     public final static String apikey = "ec29d79adf7e0f620a5709988d52659b";
 
+    /**
+     * 根据手机号，查询归属地  返回 json
+     * @param phone
+     * @return
+     */
     public static String phoneBelongWhere(String phone){
         String result = "";
         String urlParam = "phone=" + phone;
