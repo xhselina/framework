@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8">
+	<title>各类消息报表统计</title>
+	<link rel="stylesheet" href="css/jquery.fullPage.css">
+	<style>
+		.section { text-align: center; font: 50px "Microsoft Yahei"; color: #fff;}
+	</style>
+	<script src="js/jquery-1.8.3.min.js"></script>
+	<script src="js/echarts.min.js"></script>
+	<script src="js/jquery.fullPage.min.js"></script>
+	<script src="js/options.js"></script>
+	<script src="js/china.js"></script>
+	<script>
+		$(function(){
+			$('#dowebok').fullpage({
+				sectionsColor: ['#1bbc9b', '#4BBFC3', '#7BAABE', '#7BAABE']
+			});
+		});
+	</script>
+</head>
+
+<body>
+
+<div id="dowebok">
+	<div class="section">
+		<h3>消息中心2015年报表统计</h3>
+		<p>12345</p>
+		<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+		<div id="main" style="width: 600px;height:400px;"></div>
+		<script type="text/javascript">
+			// 基于准备好的dom，初始化echarts实例
+			var myChart = echarts.init(document.getElementById('main'));
+			// 使用刚指定的配置项和数据显示图表。
+			myChart.setOption(option1);
+		</script>
+	</div>
+	<div class="section">
+		<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+		<div id="main1" style="width: 1000px;height:800px;"></div>
+		<script type="text/javascript">
+			// 基于准备好的dom，初始化echarts实例
+			var myChart = echarts.init(document.getElementById('main1'));
+			// 使用刚指定的配置项和数据显示图表。
+			myChart.setOption(sendMsgGroupByMonth);
+		</script>
+	</div>
+	<div class="section">
+		<h3>按产品线统计 各消息发送总量</h3>
+		<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+		<div id="main2" style="width: 1500px;height:800px;"></div>
+		<script type="text/javascript">
+			// 基于准备好的dom，初始化echarts实例
+			var myChart = echarts.init(document.getElementById('main2'));
+			// 使用刚指定的配置项和数据显示图表。
+			myChart.setOption(sendMsgGroupByProduct);
+		</script>
+	</div>
+	<div class="section">
+		<h3>手机号码归属地统计</h3>
+		<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+		<div id="main3" style="width: 800px;height:600px;"></div>
+		<script type="text/javascript">
+			//			// 基于准备好的dom，初始化echarts实例
+			var myChart = echarts.init(document.getElementById('main3'));
+			//			// 使用刚指定的配置项和数据显示图表。
+			myChart.setOption(option);
+
+			//		$.get('../data/china.json', function (chinaJson) {
+			//		echarts.registerMap('china', chinaJson);
+			//		var chart = echarts.init(document.getElementById('main3'));
+			//			chart.setOption(phoneBelongto);
+			//		});
+		</script>
+
+	</div>
+</div>
+
+
+<a href="http://www.dowebok.com/" style="display: none;">dowebok</a>
+<a href="http://www.dowebok.com/77.html" style="display: none;">jQuery鍏ㄥ睆婊氬姩鎻掍欢fullPage.js</a>
+
+</body>
+</html>
