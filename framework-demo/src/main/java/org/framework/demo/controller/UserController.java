@@ -37,8 +37,8 @@ public class UserController {
 	@ResponseBody
 	public String save(HttpServletRequest request,ModelMap modelMap){
 		User user = new User();
-		user.setName("111");
-		int num = userService.add(user);
+		user.setName("保存成功");
+		int num = userService.save(user);
 		return "成功保存" + num + "条记录";
 	}
 

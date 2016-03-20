@@ -11,24 +11,90 @@ import java.util.List;
 public interface BaseDao<T,PK extends Serializable> {
 
 	/**
-	 * 增加实体
-	 *
+	 * 插入数据
 	 * @param object
+	 * @return  添加成功数量
 	 */
-	public int add(T object);
+	public int insert(T object);
+
+	/**
+	 * 批量插入
+	 *
+	 * @param cls
+	 * @param domainList
+	 * @return 返回插入条数
+	 */
+	public int insertBatch(Class<T> cls, List<T> domainList);
+
+	/**
+	 * 批量插入
+	 * @param cls 更新SQL的ID（sqlMap中）
+	 * @param domainList 需要更新的集合
+	 * @param count 表示多少笔数据提交一次
+	 * @return 返回插入条数
+	 */
+	public int insertBatch(Class<T> cls, List<T> domainList, Integer count);
 
 	/**
 	 * 更新实体
 	 *
 	 * @param object
+	 * @return 更新数量
 	 */
 	public int update(T object);
+
+	/**
+	 * 批量更新
+	 * @param domainList
+	 * @return 更新数量
+	 */
+	public int updateBatch(Class<T> cls, List<T> domainList);
+
+	/**
+	 *  批量更新
+	 *
+	 * @author 	: <a href="mailto:dejianliu@ebnew.com">dejianliu</a>  2015-5-7 下午2:53:55
+	 * @param cls 类   更新SQL的ID（sqlMap中）
+	 * @param domainList 需要更新的集合
+	 * @param count 表示多少笔数据提交一次
+	 * @return
+	 */
+	public int updateBatch(Class<T> cls, List<T> domainList, Integer count);
+
 	/**
 	 * 按主键删除实体
 	 *
 	 * @param pk
+	 * @return  删除数量
 	 */
 	public int delete(PK pk, Class<T> cls);
+
+	/**
+	 * 批量删除
+	 * @param domainList
+	 * @param cls
+	 * @return
+	 */
+	public int deleteBatch(Class<T> cls, List<T> domainList);
+
+	/**
+	 *批量删除
+	 *
+	 * @author 	: <a href="mailto:dejianliu@ebnew.com">dejianliu</a>  2015-5-7 下午2:54:28
+	 * @param cls class 类
+	 * @param domainList 待删除的集合实体
+	 * @param count 每多少笔数据笔数据提交一次事务
+	 * @return 返回批量删除条数
+	 */
+	public int deleteBatch(Class<T> cls, List<T> domainList, Integer count);
+
+	/**
+	 * 按主键查询
+	 *
+	 * @param pk
+	 * @return
+	 */
+	public T findByPK(PK pk, Class<T> cls);
 
 	/**
 	 * 按条件查询实体
@@ -51,13 +117,6 @@ public interface BaseDao<T,PK extends Serializable> {
 	 * @param object
 	 * @return
 	 */
-	public Integer getTotalCount(T object);
+	public Long findTotalCount(T object);
 
-	/**
-	 * 按主键查询
-	 *
-	 * @param pk
-	 * @return
-	 */
-	public T findByPK(PK pk, Class<T> cls);
 }
