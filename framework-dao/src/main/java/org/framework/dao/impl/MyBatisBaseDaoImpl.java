@@ -25,7 +25,7 @@ import java.util.List;
 @Repository(value = "myBatisBaseDao")
 public class MyBatisBaseDaoImpl<T, PK extends Serializable> implements MyBatisBaseDao<T, PK> {
 
-    private static Logger logger = Logger.getLogger(MyBatisBaseDaoImpl.class);
+    private static final Logger logger = Logger.getLogger(MyBatisBaseDaoImpl.class);
     // 自动提交设置true 类型是默认的 sqlsession
     public static final ThreadLocal<SqlSession> LOCAL_DEFAULT_HOLDER = new ThreadLocal<SqlSession>();
     // 自动提交设置false 类型为batch 的sqlsession
@@ -72,10 +72,6 @@ public class MyBatisBaseDaoImpl<T, PK extends Serializable> implements MyBatisBa
      * 根据条件 分页查询
      */
     public String PAGESELECT = ".findPage";
-
-    private Object target;
-
-    private Method invokingMethod;
 
     public int insert(T object) {
         beforeCheck(object);

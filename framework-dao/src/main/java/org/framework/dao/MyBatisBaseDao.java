@@ -22,9 +22,9 @@ public interface MyBatisBaseDao<T,PK extends Serializable> extends BaseDao<T,PK>
 	* @return SqlSessionTemplate    返回类型
 	* @throws
 	 */
-	public SqlSessionTemplate getCurSqlSessionTemplate();
+	SqlSessionTemplate getCurSqlSessionTemplate();
 	
-	public SqlSessionFactory getCurSqlSessionFactory();
+	SqlSessionFactory getCurSqlSessionFactory();
 	
 }
 

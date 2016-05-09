@@ -19,6 +19,7 @@
 
   <name>framework</name>
   <url>http://maven.apache.org</url>
+  <description>平时玩的框架</description>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
