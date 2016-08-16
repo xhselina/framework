@@ -1,9 +1,12 @@
 package org.framework.model;
 
+import org.apache.commons.lang.builder.ToStringBuilder;
+
 import java.io.Serializable;
 
 /**
  * 基础model类
+ * 添加统一输出toString
  */
 public class BaseModel implements Serializable {
     /**
@@ -29,5 +32,10 @@ public class BaseModel implements Serializable {
 
     public void setSortColumns(String sortColumns) {
         this.sortColumns = sortColumns;
+    }
+
+    @Override
+    public String toString() {
+        return  ToStringBuilder.reflectionToString(this);
     }
 }
